@@ -1,9 +1,14 @@
-colmap
-nerfstudio
+# Full stack requirements for 3D walkthrough generation
+requests
+beautifulsoup4
+pillow
+opencv-python
 torch
 torchvision
-opencv-python
-pillow
 huggingface_hub
 diffusers
-# Add more as needed for Gaussian splatting and HF models
+# For full reconstruction (install separately if needed):
+# colmap
+# nerfstudio
+# For Gaussian: gaussian-splatting or equivalent
+# Browser viewer is pure HTML/JS — no extra deps

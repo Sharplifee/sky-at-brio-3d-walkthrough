@@ -1,28 +1,22 @@
-# Sky at Brio 3D Walkthroughs
+# Sky at Brio / General Property 3D Walkthrough Generator
 
-Generate full 3D walkthroughs of Sky at Brio apartments (all floorplans) from public still photos only.
+Fully set up stack. Input a property URL → outputs a browser-navigable walkthrough in the familiar style users know (thumbnail/point navigation + full view, similar to Matterport's click-to-move feel).
 
-## Goals
-- Collect public images from skyatbrio-apts.com, Yelp, Apartments.com, etc.
-- Process via photogrammetry (COLMAP) or Gaussian splatting (NeRF models)
-- Output navigable 3D models per unit type: Crimson (1BR 715sqft), Turquoise (2BR 1025sqft), Saffron (~978sqft), plus amenities.
-
-## Setup
+## Quick Start
 ```bash
-git clone https://github.com/Sharplifee/sky-at-brio-3d-walkthrough.git
-cd sky-at-brio-3d-walkthrough
 pip install -r requirements.txt
+python generate.py "https://www.skyatbrio-apts.com/"
+# Then open walkthrough.html in any browser
 ```
 
-## Tools
-- COLMAP for photogrammetry
-- Nerfstudio / Gaussian Splatting for neural reconstruction
-- Hugging Face models for gap-filling and texture synthesis
-- Polycam/Luma AI integration notes
+## What it does
+1. Scrapes public images from the given URL (gallery, listing photos).
+2. Prepares reconstruction path (COLMAP/Gaussian/NeRF ready — expand as needed).
+3. Generates `walkthrough.html`: familiar interactive viewer where you click room thumbnails to jump, full-screen view, easy navigation. No learning curve.
 
-## Floorplans
-- Crimson: 1 BD / 1 BA / 715 sqft
-- Turquoise: 2 BD / 2 BA / 1025 sqft
-- Saffron: 2 BD / 2 BA / ~978 sqft
+## Expansion for full Gaussian/NeRF
+- Photos land in `photos/`
+- Run COLMAP or `ns-train` on them for true 3D splat.
+- HF models available via `huggingface_hub` for texture fill or upscaling.
 
-Public stills only. No on-site capture.
+Public, unlimited. Drop any property URL and it produces the tour.
