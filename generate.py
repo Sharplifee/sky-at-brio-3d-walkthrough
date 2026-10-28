@@ -24,7 +24,8 @@ def download_images(url, out_dir="photos"):
             full = urljoin(url, src)
             imgs.append(full)
     # Dedup and download
-    for i, img_url in enumerate(set(imgs)[:50]):  # limit for demo
+    unique_imgs = list(set(imgs))[:50]
+    for i, img_url in enumerate(unique_imgs):
         try:
             r = requests.get(img_url, timeout=10)
             if r.status_code == 200:
