@@ -1,0 +1,9 @@
+colmap
+nerfstudio
+torch
+torchvision
+opencv-python
+pillow
+huggingface_hub
+diffusers
+# Add more as needed for Gaussian splatting and HF models
